@@ -19,6 +19,11 @@ background_img = PhotoImage(file="background.png")
 title = Label(text="Timer", bg=YELLOW, font=("Ariel", 50), fg=GREEN)
 title.pack()
 
+button_1 = Button(text="Start")
+button_1.pack()
+button_2 = Button(text="Reset")
+button_2.pack()
+
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 canvas.create_image(100, 112, image=background_img)
 canvas.create_text(100, 130, text="00:00", fill="white",
