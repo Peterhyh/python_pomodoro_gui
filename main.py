@@ -17,7 +17,8 @@ window.config(padx=100, pady=50, bg=YELLOW)
 
 
 def count_down(count):
-    window.after(1000, count_down, count - 1)
+    if count > 0:
+        window.after(1000, count_down, count - 1)
 
 
 background_img = PhotoImage(file="background.png")
