@@ -1,4 +1,5 @@
 from tkinter import *
+import time
 
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -9,12 +10,15 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 
-def start():
-    #
 
 window = Tk()
 window.title("Pomodoro")
 window.config(padx=100, pady=50, bg=YELLOW)
+
+
+def count_down(count):
+    window.after(1000, count_down, count - 1)
+
 
 background_img = PhotoImage(file="background.png")
 
