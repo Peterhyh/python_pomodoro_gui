@@ -20,7 +20,8 @@ def start_timer():
 # Count down logic ---------------------------------------------------------
 def count_down(count):
 
-    math.floor(count/60)
+    minutes = math.floor(count/60)
+    seconds = count % 60
     canvas.itemconfig(timer_text, text=count)
 
     if count > 0:
