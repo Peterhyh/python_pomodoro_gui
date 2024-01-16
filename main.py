@@ -22,10 +22,15 @@ def count_down(count):
 
     minutes = math.floor(count/60)
     seconds = count % 60
-    canvas.itemconfig(timer_text, text=count)
+
+    if minutes == 0:
+        minutes = "00"
+    if seconds == 0:
+        seconds = "00"
+
+    canvas.itemconfig(timer_text, text=f"{minutes}:{seconds}")
 
     if count > 0:
-        print(count)
         window.after(1000, count_down, count - 1)
 
 
