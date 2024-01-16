@@ -14,7 +14,7 @@ LONG_BREAK_MIN = 20
 
 # Start Timer logic ---------------------------------------------------------
 def start_timer():
-    count_down(5 * 60)
+    count_down(1 * 60)
 
 
 # Count down logic ---------------------------------------------------------
@@ -25,8 +25,12 @@ def count_down(count):
 
     if minutes == 0:
         minutes = "00"
-    if seconds == 0:
+    elif minutes < 10 and minutes > 0:
+        minutes = "0" + f"{minutes}"
+    if seconds == 0 and seconds > 0:
         seconds = "00"
+    elif seconds < 10:
+        seconds = "0" + f"{seconds}"
 
     canvas.itemconfig(timer_text, text=f"{minutes}:{seconds}")
 
