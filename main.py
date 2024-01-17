@@ -7,14 +7,30 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 25
-SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 20
+WORK_MIN = 1
+SHORT_BREAK_MIN = 2
+LONG_BREAK_MIN = 3
+reps = 0
 
 
 # Start Timer logic ---------------------------------------------------------
 def start_timer():
-    count_down(1 * 60)
+    global reps
+    work_seconds = WORK_MIN * 60
+    short_break_seconds = SHORT_BREAK_MIN * 60
+    long_break_seconds = LONG_BREAK_MIN * 60
+
+    reps += 1
+
+    if reps % 8 == 0:
+        count_down(long_break_seconds)
+        title.config(text="Long Break", fg=RED)
+    elif reps % 2 == 0:
+        count_down(short_break_seconds)
+        title.config(text="Short Break", fg=PINK)
+    else:
+        count_down(work_seconds)
+        title.config(text="Work", fg=GREEN)
 
 
 # Count down logic ---------------------------------------------------------
@@ -36,6 +52,8 @@ def count_down(count):
 
     if count > 0:
         window.after(1000, count_down, count - 1)
+    else:
+        start_timer()
 
 
 # UI Codes ---------------------------------------------------------
