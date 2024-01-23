@@ -58,7 +58,7 @@ def count_down(count):
 
 # UI Codes ---------------------------------------------------------
 window = Tk()
-window.title("Pomodoro")
+window.title("Pomodoro Timer")
 window.config(padx=100, pady=50, bg=YELLOW)
 
 background_img = PhotoImage(file="background.png")
