@@ -11,6 +11,7 @@ WORK_MIN = 1
 SHORT_BREAK_MIN = 2
 LONG_BREAK_MIN = 3
 reps = 0
+check_mark_count = ""
 
 
 # Start Timer logic ---------------------------------------------------------
@@ -28,9 +29,9 @@ def start_timer():
     elif reps % 2 == 0:
         count_down(short_break_seconds)
         title.config(text="Short Break", fg=PINK)
+        check_mark_count += "✔"
     else:
         count_down(work_seconds)
-        title.config(text="Work", fg=GREEN)
 
 
 # Count down logic ---------------------------------------------------------
@@ -77,10 +78,15 @@ timer_text = canvas.create_text(100, 130, text="00:00", fill="white",
 
 canvas.grid(column=1, row=1)
 
-start_button = Button(text="Start", highlightthickness=1, command=start_timer)
+start_button = Button(text="Start", highlightthickness=1,
+                      highlightbackground=YELLOW, command=start_timer)
 start_button.grid(column=0, row=2)
 
-reset_button = Button(text="Reset", highlightthickness=1)
+reset_button = Button(text="Reset", highlightthickness=1,
+                      highlightbackground=YELLOW,)
 reset_button.grid(column=2, row=2)
+
+check_mark = Label(text=f"{check_mark_count}", fg=GREEN, bg=YELLOW)
+check_mark.grid(column=1, row=3)
 
 window.mainloop()
